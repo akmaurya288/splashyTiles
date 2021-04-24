@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
                     pressPosX = Input.mousePosition.x;
                 #endif
                 
-                #if UNITY_ANDROID
+                #if UNITY_ANDROID && !UNITY_EDITOR
                     pressPosX = Input.touches[0].position.x;
                 #endif
             }
@@ -36,19 +36,14 @@ public class PlayerController : MonoBehaviour
 
         if(gameStarted){
 
-            // Forword Movement
-
-            // transform.Translate(transform.position.x, transform.position.y, transform.position.z + 8);
-            transform.Translate(transform.forward * movementSpeed * Time.smoothDeltaTime);
-
-            // Side Movement
+          MoveForward();
 
         if(Input.GetMouseButtonDown(0)){
                 #if UNITY_EDITOR
                     pressPosX = Input.mousePosition.x;
                 #endif
                 
-                #if UNITY_ANDROID
+                #if UNITY_ANDROID && !UNITY_EDITOR
                     pressPosX = Input.touches[0].position.x;
                 #endif
         }
@@ -57,15 +52,33 @@ public class PlayerController : MonoBehaviour
             }
 
         if(pressPosX !=null){
-            float currentX = Input.mousePosition.x;
-            float difference = currentX - pressPosX.Value;
-            Move((difference * 0.2f) + transform.position.x);
+                #if UNITY_EDITOR
+                    float currentX = Input.mousePosition.x;
+                #endif 
+                
+                #if UNITY_ANDROID && !UNITY_EDITOR
+                     float currentX = Input.touches[0].position.x;
+                #endif
+            float difference =  pressPosX.Value - currentX;
+            if(Application.platform == RuntimePlatform.Android)
+            MoveHorizontal( transform.position.x - (difference/Screen.width)*1.6f );
+            else
+            MoveHorizontal( transform.position.x - (difference/Screen.width)*0.8f );
+
         }
 
         if(transform.GetChild(0).transform.position.y < 0.5 && !triggered){
             GameStop();
         }
         }
+    }
+    private void MoveHorizontal(float x)
+    {
+        transform.position = new Vector3(x, transform.position.y, transform.position.z);
+    }
+    private void MoveForward()
+    {
+        transform.Translate(transform.forward * movementSpeed * Time.smoothDeltaTime);
     }
 
     public void RestartGame(){
@@ -84,10 +97,6 @@ public class PlayerController : MonoBehaviour
         GamePlayController.SharedInstance.StopGame();
     }
 
-    private void Move(float x)
-    {
-        transform.position = new Vector3(x*0.05f, transform.position.y, transform.position.z);
-    }
 
     public void TriggerEnter(){
         triggered = true;

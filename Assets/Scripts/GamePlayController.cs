@@ -70,7 +70,7 @@ private void Start()
 
     public void SpawnEnemy(Vector3 position){
         float random = UnityEngine.Random.value;
-        position = new Vector3(random * 6 , position.y, position.z);
+        position = new Vector3(random * 5 , position.y, position.z);
         GameObject gameObject = ObjectPooler.SharedInstance.GetPooledObject("cube");
         if (gameObject != null)
         {

@@ -3,28 +3,58 @@
     "m_SelectedPackage": {
         "deviceId": "JAAAGF031256VU3",
         "name": "com.DefaultCompany.SplashyTiles",
-        "processId": 10776,
-        "exited": true
+        "processId": 27250,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "JAAAGF031256VU3",
             "name": "com.DefaultCompany.SplashyTiles",
-            "processId": 9046,
+            "processId": 21337,
             "exited": true
         },
         {
             "deviceId": "JAAAGF031256VU3",
             "name": "com.DefaultCompany.SplashyTiles",
-            "processId": 9594,
+            "processId": 22652,
             "exited": true
         },
         {
             "deviceId": "JAAAGF031256VU3",
             "name": "com.DefaultCompany.SplashyTiles",
-            "processId": 10776,
+            "processId": 23456,
             "exited": true
+        },
+        {
+            "deviceId": "JAAAGF031256VU3",
+            "name": "com.DefaultCompany.SplashyTiles",
+            "processId": 24410,
+            "exited": true
+        },
+        {
+            "deviceId": "JAAAGF031256VU3",
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 2232,
+            "exited": false
+        },
+        {
+            "deviceId": "JAAAGF031256VU3",
+            "name": "com.DefaultCompany.SplashyTiles",
+            "processId": 25421,
+            "exited": true
+        },
+        {
+            "deviceId": "JAAAGF031256VU3",
+            "name": "com.DefaultCompany.SplashyTiles",
+            "processId": 26842,
+            "exited": false
+        },
+        {
+            "deviceId": "JAAAGF031256VU3",
+            "name": "com.DefaultCompany.SplashyTiles",
+            "processId": 27250,
+            "exited": false
         }
     ],
     "m_Tags": {

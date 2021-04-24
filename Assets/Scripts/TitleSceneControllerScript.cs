@@ -5,18 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class TitleSceneControllerScript : MonoBehaviour
 {
-
+    public AsyncOperation operation;
     private void Start()
     {
         StartCoroutine(LoadAsynchronously());
+        StartCoroutine(WaitAndLoad());
     }
     IEnumerator LoadAsynchronously()
     {
-        yield return new WaitForSeconds(2f);
-        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
+        operation = SceneManager.LoadSceneAsync(1);
+        operation.allowSceneActivation = false;
         while (!operation.isDone)
         {
             yield return null;
         }
     }
+    IEnumerator WaitAndLoad()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("qq");
+        operation.allowSceneActivation = true;
+    }
+
 }
